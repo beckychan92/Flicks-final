@@ -95,6 +95,18 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         return cell
     }
     
+    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
+        let cell = sender as! UITableViewCell
+        let indexPath = tableView.indexPath(for: cell)
+        let movie = movies![indexPath!.row]
+        
+        let detailViewController = segue.destination as! DetailViewController
+        detailViewController.movie = movie
+        
+        
+        print("prepare for seque called")
+    }
+    
 
 
 }
