@@ -26,7 +26,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="99"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v93-eT-dLh" id="GJY-xi-bEl">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="98"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cyf-l4-wdQ">
@@ -53,7 +53,7 @@
                                             <outlet property="overviewLabel" destination="8n3-lc-CFC" id="p5A-I0-e8o"/>
                                             <outlet property="posterView" destination="rSo-yN-oM8" id="ZBh-Lr-yPX"/>
                                             <outlet property="titleLabel" destination="cyf-l4-wdQ" id="LmH-7H-2gx"/>
-                                            <segue destination="jbr-Dy-7oe" kind="push" id="GIa-ji-ofQ"/>
+                                            <segue destination="jbr-Dy-7oe" kind="push" identifier="seque" id="RMq-45-MGJ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -93,7 +93,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Wjt-xZ-2eQ">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Wjt-xZ-2eQ">
                                         <rect key="frame" x="13" y="48" width="296" height="217"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -108,14 +108,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="Qgp-f7-20I"/>
                     <connections>
-                        <outlet property="overviewLabel" destination="Wjt-xZ-2eQ" id="kf8-e1-p7Z"/>
-                        <outlet property="posterImageView" destination="Ud6-lz-ADu" id="Z0F-xT-bM6"/>
-                        <outlet property="titleLabel" destination="WVV-KI-QKa" id="1Jw-kW-Max"/>
+                        <outlet property="overviewLabel" destination="Wjt-xZ-2eQ" id="yjQ-ai-VNa"/>
+                        <outlet property="posterImageView" destination="Ud6-lz-ADu" id="5lL-1i-Z8J"/>
+                        <outlet property="titleLabel" destination="WVV-KI-QKa" id="qux-ho-iwx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="baK-HL-uDK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="865" y="154"/>
+            <point key="canvasLocation" x="1041" y="147"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aTT-XI-tHO">

@@ -13,6 +13,12 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
 
     @IBOutlet weak var tableView: UITableView!
     
+//    @IBOutlet weak var titleLabel: UILabel!
+//    @IBOutlet weak var overviewLabel: UILabel!
+//    @IBOutlet weak var posterImageLabel: UIImageView!
+//    
+    
+    
     var movies: [NSDictionary]?
     
     //UI Refresh Control
@@ -49,10 +55,9 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         // Do any additional setup after loading the view.
     }
     
+    //refresh
     func didRefreshList(){
-        
         self.refreshControl.endRefreshing()
-    
     }
     
     
@@ -77,25 +82,27 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath as IndexPath) as! MovieCell
         
         let movie = movies![indexPath.row]
-        let title = movie["title"] as! String
-        let overview = movie["overview"] as! String
-        let posterPath = movie["poster_path"] as! String
+//        cell.movie = movie
         
-        
-        let baseURL = "https://image.tmdb.org/t/p/w500"
-        
-        let imageURL = NSURL(string: baseURL + posterPath)
-        
-    
+        let title = movie["title"] as? String
+        let overview = movie["overview"] as? String
         
         cell.titleLabel.text = title
         cell.overviewLabel.text = overview
-        cell.posterView.setImageWith(imageURL as! URL)
         
+        let baseURL = "https://image.tmdb.org/t/p/w500"
+        
+        if let posterPath = movie["poster_path"] as? String{
+            let posterURL = NSURL(string: baseURL + posterPath)
+            cell.posterView.setImageWith(posterURL! as URL)
+        }
+
         return cell
     }
     
-    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         let cell = sender as! UITableViewCell
         let indexPath = tableView.indexPath(for: cell)
         let movie = movies![indexPath!.row]
@@ -103,8 +110,6 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         let detailViewController = segue.destination as! DetailViewController
         detailViewController.movie = movie
         
-        
-        print("prepare for seque called")
     }
     
 

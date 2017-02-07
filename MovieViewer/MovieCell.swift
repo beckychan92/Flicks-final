@@ -9,6 +9,7 @@
 import UIKit
 
 class MovieCell: UITableViewCell {
+    
 
     
     
@@ -17,12 +18,25 @@ class MovieCell: UITableViewCell {
     @IBOutlet weak var overviewLabel: UILabel!
     
     @IBOutlet weak var posterView: UIImageView!
+//    var movie: NSDictionary = [:]
     
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+//        let title = movie["title"] as? String
+//        let overview = movie["overview"] as? String
+//        titleLabel.text = title
+//        overviewLabel.text = overview
+//        
+//        
+//        let baseURL = "https://image.tmdb.org/t/p/w500"
+//        
+//        if let posterPath = movie["poster_path"] as? String{
+//            let posterURL = NSURL(string: baseURL + posterPath)
+//            posterView.setImageWith(posterURL as! URL)
+//        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
