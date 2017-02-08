@@ -28,9 +28,8 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.delegate = self
         
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
-        let url = URL(string: "https://api.themoviedb.org/3/movie/\(endpoint)?api_key=\(apiKey)")
-        let request = URLRequest(url: url!, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
-            //URLRequest(url: url!)
+        let url = URL(string: "https://api.themoviedb.org/3/movie/\(endpoint!)?api_key=\(apiKey)")!
+        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)            //URLRequest(url: url!)
             //
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
         let task: URLSessionDataTask = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
@@ -44,7 +43,6 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
             }
         }
         
-        
         //Refresh
         tableView.refreshControl = self.refreshControl
         self.refreshControl.addTarget(self, action: "didRefreshList", for: .valueChanged)
@@ -52,6 +50,8 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         task.resume()
         // Do any additional setup after loading the view.
     }
+    
+    
     
     //refresh
     func didRefreshList(){
