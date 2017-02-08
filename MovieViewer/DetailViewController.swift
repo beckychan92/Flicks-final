@@ -19,8 +19,6 @@ class DetailViewController: UIViewController {
     
     var movie: NSDictionary!
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
