@@ -43,6 +43,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
             }
         }
         
+        
         //Refresh
         tableView.refreshControl = self.refreshControl
         self.refreshControl.addTarget(self, action: "didRefreshList", for: .valueChanged)
@@ -57,7 +58,6 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     func didRefreshList(){
         self.refreshControl.endRefreshing()
     }
-    
     
     
     
@@ -80,13 +80,25 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath as IndexPath) as! MovieCell
         
         let movie = movies![indexPath.row]
-//        cell.movie = movie
         
         let title = movie["title"] as? String
         let overview = movie["overview"] as? String
         
         cell.titleLabel.text = title
         cell.overviewLabel.text = overview
+        
+        
+//        Customizing the cell selection style = none
+//        cell.selectionStyle = .none
+
+//        Customizing the cell selection style = yellow
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor.yellow
+        cell.selectedBackgroundView = backgroundView
+        
+//        trying to change the background color to an image
+//        cell.accessoryView?.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "film_layout"))
+        
         
         let baseURL = "https://image.tmdb.org/t/p/w500"
         
