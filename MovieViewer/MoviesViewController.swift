@@ -27,7 +27,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         
         tableView.dataSource = self
         tableView.delegate = self
-        self.navigationItem.title = "Flick's Movies"
+        self.navigationItem.title = "M o v i e s"
         
         if let navigationBar = navigationController?.navigationBar {
             navigationBar.setBackgroundImage(UIImage(named: "film_layout"), for: .default)
@@ -110,19 +110,6 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
 
         
         
-        //************************************************//
-//        let smallImageRequest = NSURLRequest(URL: NSURL(string:smallImageRequest)!)
-//        let largeImageRequest = NSURLRequest(URL: NSURL(string:largeImageRequest)!)
-//        
-//        self.myImageView.setImageWithURLRequest(
-//            smallImageRequest,
-//            placeholderImage: nil,
-//            success:{{ smallImageRequest;, smallImageResponse, smallImage) -> Void in
-//                
-//                }}
-//        )
-        //************************************************//
-        
         
         let baseURL = "https://image.tmdb.org/t/p/w500"
         
@@ -130,12 +117,8 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
             let posterURL = NSURL(string: baseURL + posterPath)
             cell.posterView.setImageWith(posterURL! as URL)
         }
-        //************************************************//
-
         
         
-        
-
         return cell
     }
     
