@@ -14,6 +14,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
 
     @IBOutlet weak var tableView: UITableView!
     
+    
     var movies: [NSDictionary]?
     var endpoint: String!
     
@@ -26,6 +27,13 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         
         tableView.dataSource = self
         tableView.delegate = self
+        self.navigationItem.title = "Flick's Movies"
+        
+        if let navigationBar = navigationController?.navigationBar {
+            navigationBar.setBackgroundImage(UIImage(named: "film_layout"), for: .default)
+            navigationBar.tintColor = UIColor(red: 1.0, green: 0.25, blue: 0.25, alpha: 0.8)
+        }
+        
         
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
         let url = URL(string: "https://api.themoviedb.org/3/movie/\(endpoint!)?api_key=\(apiKey)")!
@@ -87,7 +95,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         cell.titleLabel.text = title
         cell.overviewLabel.text = overview
         
-        
+        //************************************************//
 //        Customizing the cell selection style = none
 //        cell.selectionStyle = .none
 
@@ -98,6 +106,22 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         
 //        trying to change the background color to an image
 //        cell.accessoryView?.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "film_layout"))
+        //************************************************//
+
+        
+        
+        //************************************************//
+//        let smallImageRequest = NSURLRequest(URL: NSURL(string:smallImageRequest)!)
+//        let largeImageRequest = NSURLRequest(URL: NSURL(string:largeImageRequest)!)
+//        
+//        self.myImageView.setImageWithURLRequest(
+//            smallImageRequest,
+//            placeholderImage: nil,
+//            success:{{ smallImageRequest;, smallImageResponse, smallImage) -> Void in
+//                
+//                }}
+//        )
+        //************************************************//
         
         
         let baseURL = "https://image.tmdb.org/t/p/w500"
@@ -106,6 +130,11 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
             let posterURL = NSURL(string: baseURL + posterPath)
             cell.posterView.setImageWith(posterURL! as URL)
         }
+        //************************************************//
+
+        
+        
+        
 
         return cell
     }

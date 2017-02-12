@@ -34,22 +34,54 @@ class DetailViewController: UIViewController {
         
         overviewLabel.sizeToFit()
         
-        let baseURL = "https://image.tmdb.org/t/p/w500"
         
-        if let posterPath = movie["poster_path"] as? String{
-            let posterURL = NSURL(string: baseURL + posterPath)
-            posterImageView.setImageWith(posterURL! as URL)
+  
+        
+        //From low resolution to high resolution
+        if let posterPath = movie["poster_path"] as? String {
+            
+            //concatenate base url (for low resolution and large resolution) with posterpath
+            let smallURL = "https://image.tmdb.org/t/p/w45" + posterPath
+            let largeURL = "https://image.tmdb.org/t/p/original" + posterPath
+            let smallImageRequest = NSURLRequest(url: NSURL(string: smallURL)! as URL)
+            let largeImageRequest = NSURLRequest(url: NSURL(string: largeURL)! as URL)
+            posterImageView.setImageWith(
+                smallImageRequest as URLRequest,
+                placeholderImage: nil,
+                success: { (smallImageRequest, smallImageResponse, smallImage) -> Void in
+                    
+                    self.posterImageView.alpha = 0.0
+                    self.posterImageView.image = smallImage;
+                    
+                    UIView.animate(withDuration: 0.3, animations: { () -> Void in
+                        
+                        self.posterImageView.alpha = 1.0
+                        
+                    }, completion: { (sucess) -> Void in
+                        
+                        self.posterImageView.setImageWith(
+                            largeImageRequest as URLRequest,
+                            placeholderImage: smallImage,
+                            success: { (largeImageRequest, largeImageResponse, largeImage) -> Void in
+                                
+                                self.posterImageView.image = largeImage;
+                                
+                        },
+                            failure: { (request, response, error) -> Void in
+
+                        })
+                    })
+            },
+                failure: { (request, response, error) -> Void in
+
+            })
         }
         
-        print(movie)
+        
+        
+        
 
-        // Do any additional setup after loading the view.
-    }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any r esources that can be recreated.
-    }
     
 
     /*
@@ -62,4 +94,5 @@ class DetailViewController: UIViewController {
     }
     */
 
+}
 }
